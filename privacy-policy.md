@@ -1,6 +1,6 @@
 # Couch Critics: Privacy Policy
 
-Last updated: October 11, 2026
+Last updated: October 12, 2026
 
 Couch Critics is a free, independent Root App that lets the members of a community rate movies, series and games. Português logo abaixo.
 
@@ -20,7 +20,9 @@ Only the community where the app is installed, and the Root platform that hosts 
 
 ## Third-party services
 
-To search for titles, the app's server sends the search text and title IDs to TMDB, OMDb and IGDB (through Twitch). Covers are loaded by each member's device directly from the image servers of TMDB and IGDB, which can see that device's IP address. These services have their own privacy policies.
+To search for titles, the app's server sends the search text and title IDs to TMDB, OMDb and IGDB (through Twitch). Covers are loaded by each member's device directly from the image servers of TMDB and IGDB, which can see that device's IP address. These services have their own privacy policies. If the admins turn on the optional categories, the server also sends the search text to Open Library (books), AniList (anime) and MusicBrainz (albums), and each member's device loads covers from the image servers of Open Library, AniList and the Cover Art Archive, which can see that device's IP address.
+
+When a member imports a spreadsheet of ratings, the file is read on that member's own device; only the ratings the member confirms are sent to the app.
 
 This product uses the TMDB API but is not endorsed or certified by TMDB.
 
@@ -44,7 +46,7 @@ Root user: MalphasW (send a message on Root).
 
 # Couch Critics: Política de Privacidade
 
-Última atualização: 11 de outubro de 2026
+Última atualização: 12 de outubro de 2026
 
 O Couch Critics é um app gratuito e independente do Root em que os membros de uma comunidade dão nota a filmes, séries e jogos.
 
@@ -64,7 +66,9 @@ Somente a comunidade onde o app está instalado e a plataforma Root, que o hospe
 
 ## Serviços de terceiros
 
-Para buscar títulos, o servidor do app envia o texto da busca e os IDs dos títulos ao TMDB, ao OMDb e ao IGDB (pela Twitch). As capas são carregadas diretamente pelo aparelho de cada membro, nos servidores de imagens do TMDB e do IGDB, que podem ver o endereço IP desse aparelho. Esses serviços têm as próprias políticas de privacidade.
+Para buscar títulos, o servidor do app envia o texto da busca e os IDs dos títulos ao TMDB, ao OMDb e ao IGDB (pela Twitch). As capas são carregadas diretamente pelo aparelho de cada membro, nos servidores de imagens do TMDB e do IGDB, que podem ver o endereço IP desse aparelho. Esses serviços têm as próprias políticas de privacidade. Se os admins ligarem as categorias opcionais, o servidor também envia o texto da busca à Open Library (livros), à AniList (animes) e à MusicBrainz (álbuns), e o aparelho de cada membro carrega capas dos servidores de imagens da Open Library, da AniList e do Cover Art Archive, que podem ver o endereço IP desse aparelho.
+
+Quando um membro importa uma planilha de notas, o arquivo é lido no próprio aparelho dele; só as notas que ele confirmar são enviadas ao app.
 
 Este produto usa a API do TMDB, mas não é apoiado nem certificado pelo TMDB.
 
