@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Couch Critics: como conseguir as chaves de API</title>
+<style>
+  :root { --bg: #ffffff; --text: #1b2430; --muted: #4d5b6b; --line: #d8dee6; --accent: #b83b22; --code: #f1f4f7; --head: #eef2f6; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0e1c26; --text: #f1ede8; --muted: #b3c0cb; --line: #27404f; --accent: #ff7a5c; --code: #14293a; --head: #14293a; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 780px; margin: 0 auto; padding: 32px 20px 80px; }
+  .top { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 0 0 28px; font-size: 0.95rem; }
+  h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 12px; }
+  h2 { font-size: 1.35rem; margin: 40px 0 8px; padding-top: 8px; border-top: 1px solid var(--line); }
+  h3 { font-size: 1.1rem; margin: 28px 0 4px; }
+  p, li { margin: 8px 0; }
+  ul, ol { padding-left: 24px; }
+  a { color: var(--accent); }
+  hr { display: none; } /* os títulos já têm a própria linha */
+  code { background: var(--code); padding: 1px 6px; border-radius: 5px; font: 0.9em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow-wrap: anywhere; }
+  pre { background: var(--code); padding: 14px 16px; border-radius: 8px; overflow-x: auto; }
+  pre code { background: none; padding: 0; overflow-wrap: normal; }
+  blockquote { margin: 16px 0; padding: 4px 16px; border-left: 4px solid var(--accent); background: var(--code); border-radius: 0 8px 8px 0; }
+  .table-wrap { overflow-x: auto; margin: 16px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+  th, td { text-align: left; vertical-align: top; padding: 8px 12px; border: 1px solid var(--line); }
+  th { background: var(--head); }
+  footer { margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+  .cards { list-style: none; padding: 0; display: grid; gap: 12px; }
+  .cards li { margin: 0; }
+  .cards a { display: block; padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; text-decoration: none; color: var(--text); }
+  .cards a:hover, .cards a:focus-visible { border-color: var(--accent); }
+  .cards strong { display: block; color: var(--accent); }
+  .cards span { color: var(--muted); font-size: 0.95rem; }
+</style>
+</head>
+<body>
+<main>
+  <nav class="top" aria-label="Navigation"><a href="./">← Guias</a><a href="../">Política de privacidade</a></nav>
+<h1 id="couch-critics-como-conseguir-as-chaves-de-api">Couch Critics: como conseguir as chaves de API</h1>
+<p>Este guia é para quem administra o Couch Critics na comunidade. Ele ensina, passo a passo, a conseguir as 3 chaves que o app usa para buscar filmes, séries e jogos. Não precisa saber programar.</p>
+<h2 id="antes-de-comecar">Antes de começar</h2>
+<p><strong>O que é uma chave de API?</strong> É como uma senha que o Couch Critics usa para pedir informações a outro site (por exemplo, &quot;me dê a capa e o nome em português deste filme&quot;). Sem a chave, o app continua funcionando, mas só com títulos adicionados à mão e sem capa.</p>
+<p><strong>Por que cada comunidade usa a sua?</strong> Os sites limitam quantas consultas cada chave pode fazer por dia. Com uma chave por comunidade, o limite de uma não atrapalha as outras.</p>
+<p><strong>Quanto custa?</strong> Nada. As 3 chaves são gratuitas para uso pessoal e sem fins lucrativos.</p>
+<p><strong>Quanto tempo leva?</strong> Cerca de 20 a 30 minutos no total, mais a espera de um e-mail.</p>
+<p><strong>O que você precisa ter à mão:</strong></p>
+<ul>
+<li>Um e-mail que você consiga abrir agora.</li>
+<li>Um celular (a Twitch exige verificação em duas etapas).</li>
+<li>Um computador. O cadastro do TMDB não funciona bem no celular.</li>
+<li>Alguns minutos para preencher os formulários por inteiro: o TMDB e o OMDb só criam a chave se <strong>todos os campos pedidos</strong> estiverem preenchidos (nome do aplicativo, URL, descrição e seus dados de contato no TMDB; e-mail no OMDb).</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Chave</th>
+<th>Serve para</th>
+<th>Onde</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TMDB</td>
+<td>Buscar filmes e séries em português ou inglês, capas e episódios</td>
+<td>themoviedb.org</td>
+</tr>
+<tr>
+<td>OMDb</td>
+<td>Mostrar a nota do IMDb ao lado</td>
+<td>omdbapi.com</td>
+</tr>
+<tr>
+<td>IGDB (pela Twitch)</td>
+<td>Buscar jogos e capas</td>
+<td>dev.twitch.tv</td>
+</tr>
+</tbody></table></div>
+<p>Os sites mudam as telas de vez em quando. Se um botão tiver um nome um pouco diferente do que está aqui, procure o que faz a mesma coisa.</p>
+<hr>
+<h2 id="1-tmdb-filmes-e-series">1. TMDB (filmes e séries)</h2>
+<ol>
+<li><p>Abra <a href="https://www.themoviedb.org/" rel="noopener">https://www.themoviedb.org/</a> e crie uma conta (botão de cadastro no canto superior direito). Escolha usuário, senha e e-mail.</p>
+</li>
+<li><p>Abra o e-mail que o TMDB enviou e confirme a conta, se ele pedir.</p>
+</li>
+<li><p>Entre na sua conta, clique na sua foto (canto superior direito) e vá em <strong>Settings</strong> (Configurações).</p>
+</li>
+<li><p>No menu da esquerda, clique em <strong>API</strong>.</p>
+</li>
+<li><p>Peça uma chave. O TMDB mostra os termos de uso: leia e aceite. Depois abre um formulário <strong>Application Details</strong> (Detalhes do aplicativo) com 4 campos.</p>
+<blockquote>
+<p><strong>Atenção: todos os campos precisam ser preenchidos para o TMDB criar a chave.</strong> O formulário não deixa enviar com algum campo vazio. O que mais costuma travar é a <strong>URL</strong> (aparece em vermelho com &quot;Field is required&quot;) e a <strong>descrição</strong> do aplicativo. Se ficar em branco, a chave não é criada.</p>
+</blockquote>
+<p>Preencha assim:</p>
+<ul>
+<li><p><strong>Nome do aplicativo:</strong> <code>Couch Critics</code></p>
+</li>
+<li><p><strong>URL do aplicativo (obrigatório):</strong> o app não tem site próprio, então use <code>https://www.rootapp.com</code></p>
+</li>
+<li><p><strong>Tipo de uso:</strong> <code>Personal</code> (uso pessoal, sem fins lucrativos)</p>
+</li>
+<li><p><strong>Sobre o aplicativo:</strong> cole este texto em inglês, que é o que a equipe do TMDB lê:</p>
+<pre><code>Couch Critics is a free, non-commercial app for a Root community where friends rate movies, series and games together. It uses the TMDB API to search titles in English and Portuguese and to show posters and episode lists. Each community uses its own API key. The app displays the required TMDB attribution and logo, and no data is sold or monetized.
+</code></pre>
+</li>
+</ul>
+<p>Mais abaixo, o formulário pode pedir seus dados de contato (nome, endereço, telefone, e-mail). Eles também são obrigatórios para criar a chave. Preencha com dados reais: servem só para o TMDB.</p>
+</li>
+<li><p>Ao terminar, a página <strong>API</strong> mostra duas coisas: <strong>API Key</strong> e <strong>API Read Access Token</strong>.</p>
+</li>
+<li><p>Copie o <strong>API Read Access Token</strong>. É o texto bem comprido (centenas de caracteres). Os dois dão o mesmo acesso, mas o Couch Critics usa o comprido.</p>
+</li>
+</ol>
+<p><strong>Guarde:</strong> o API Read Access Token.</p>
+<hr>
+<h2 id="2-omdb-nota-do-imdb">2. OMDb (nota do IMDb)</h2>
+<ol>
+<li>Abra <a href="https://www.omdbapi.com/apikey.aspx" rel="noopener">https://www.omdbapi.com/apikey.aspx</a></li>
+<li>Em <strong>Account Type</strong>, escolha a opção gratuita: <strong>FREE! (1,000 daily limit)</strong>. Isso significa 1.000 consultas por dia. O Couch Critics guarda as respostas para gastar pouco.</li>
+<li>Digite o seu e-mail e clique em <strong>Generate API Key</strong>.</li>
+<li>Espere o e-mail com a chave. Pode demorar, principalmente em contas Hotmail, Outlook, Live e Yahoo. Olhe também a caixa de spam.</li>
+<li>Se o e-mail trouxer um link de ativação, clique nele. A chave pode não funcionar antes disso.</li>
+<li>Se a chave não chegar em 1 hora, o próprio site pede para entrar em contato com o autor.</li>
+</ol>
+<p><strong>Guarde:</strong> a chave que veio por e-mail.</p>
+<hr>
+<h2 id="3-igdb-jogos-pela-twitch">3. IGDB (jogos), pela Twitch</h2>
+<p>O IGDB é o banco de dados de jogos que pertence à Twitch. Por isso a chave sai da conta da Twitch.</p>
+<h3 id="3-1-conta-e-verificacao-em-duas-etapas">3.1 Conta e verificação em duas etapas</h3>
+<ol>
+<li>Abra <a href="https://www.twitch.tv/" rel="noopener">https://www.twitch.tv/</a> e crie uma conta (<strong>Sign Up</strong>). Confirme o e-mail.</li>
+<li>Ative a <strong>verificação em duas etapas</strong> (2FA): na Twitch, abra <strong>Settings</strong> (Configurações), depois <strong>Security and Privacy</strong> (Segurança e privacidade) e procure a seção <strong>Security</strong>. Ative a verificação em duas etapas e siga as instruções com o seu celular.<ul>
+<li>Sem isso, a Twitch não deixa criar o aplicativo no passo seguinte.</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-2-criar-o-aplicativo">3.2 Criar o aplicativo</h3>
+<ol start="3">
+<li>Abra <a href="https://dev.twitch.tv/console" rel="noopener">https://dev.twitch.tv/console</a> e entre com a mesma conta. Se a página não reconhecer a 2FA recém-ativada, atualize a página.</li>
+<li>Abra a aba <strong>Applications</strong> e clique em <strong>Register Your Application</strong>.</li>
+<li>Preencha:<ul>
+<li><strong>Name:</strong> um nome único em toda a Twitch, por exemplo <code>Couch Critics - NomeDaSuaComunidade</code>. Se disser que já existe, acrescente números.</li>
+<li><strong>OAuth Redirect URLs:</strong> digite <code>http://localhost</code> e clique em <strong>Add</strong>. O Couch Critics não usa esse endereço, mas o formulário exige.</li>
+<li><strong>Category:</strong> escolha <strong>Application Integration</strong>. Se não existir, escolha a opção mais próxima.</li>
+<li><strong>Client Type</strong>, se aparecer: escolha <strong>Confidential</strong>.</li>
+<li>Marque <strong>I&#39;m not a robot</strong> e clique em <strong>Create</strong>.</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-3-pegar-o-client-id-e-o-client-secret">3.3 Pegar o Client ID e o Client Secret</h3>
+<ol start="6">
+<li>Na lista <strong>Developer Applications</strong>, ache o seu aplicativo e clique em <strong>Manage</strong>.</li>
+<li>Copie o <strong>Client ID</strong>.</li>
+<li>Clique em <strong>New Secret</strong> e copie o <strong>Client Secret</strong> na hora. Ele só aparece uma vez. Se você perder, é só clicar em <strong>New Secret</strong> de novo (o antigo deixa de funcionar).</li>
+</ol>
+<p><strong>Guarde:</strong> o Client ID e o Client Secret.</p>
+<hr>
+<h2 id="4-onde-colar-as-chaves-no-couch-critics">4. Onde colar as chaves no Couch Critics</h2>
+<ol>
+<li><p>Quem instala o app escolhe, na instalação, <strong>quem administra o Couch Critics</strong> (pessoas ou cargos).</p>
+</li>
+<li><p>Só essas pessoas veem o botão <strong>Configurações</strong> no topo do app.</p>
+</li>
+<li><p>Lá há três blocos: <strong>TMDB</strong> (um campo), <strong>OMDb</strong> (um campo) e <strong>IGDB (jogos)</strong>, que tem dois campos, <strong>Client ID</strong> e <strong>Client Secret</strong>. Os dois do IGDB são obrigatórios e vão juntos no mesmo botão Salvar. Cole cada chave no lugar certo e salve. Se o serviço recusar a chave, o app avisa e não a guarda.
+Guia detalhado, com cada mensagem da tela e solução de problemas: <a href="como-configurar.html">Como configurar as chaves</a>.</p>
+</li>
+<li><p>O app guarda as chaves no banco de dados da sua comunidade. Depois de salvas, elas não aparecem de volta na tela (só &quot;configurada&quot;).</p>
+</li>
+</ol>
+<p>Pode configurar só uma parte: sem a chave do OMDb, por exemplo, tudo funciona, só não aparece a nota do IMDb.</p>
+<hr>
+<h2 id="5-cuidados-com-as-chaves">5. Cuidados com as chaves</h2>
+<ul>
+<li>Trate como senha. Não poste em chat, em canal da comunidade nem em print.</li>
+<li>Se uma chave vazar:<ul>
+<li><strong>TMDB:</strong> gere outra na mesma página <strong>Settings → API</strong>.</li>
+<li><strong>OMDb:</strong> peça uma nova chave pelo mesmo formulário.</li>
+<li><strong>Twitch/IGDB:</strong> clique em <strong>New Secret</strong> (o Client Secret antigo para de funcionar).
+Depois cole a nova no Couch Critics.</li>
+</ul>
+</li>
+<li>Se uma busca parar de funcionar do nada, veja se a chave expirou ou foi trocada.</li>
+</ul>
+<h2 id="6-problemas-comuns">6. Problemas comuns</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Problema</th>
+<th>O que fazer</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>O e-mail do OMDb não chega</td>
+<td>Espere até 1 hora, olhe o spam, tente com outro e-mail (Gmail costuma ser mais rápido).</td>
+</tr>
+<tr>
+<td>A Twitch não deixa criar o aplicativo</td>
+<td>Confirme que a verificação em duas etapas está ativa e atualize a página do console.</td>
+</tr>
+<tr>
+<td>&quot;Name already in use&quot; na Twitch</td>
+<td>Troque o nome do aplicativo por outro, mais específico.</td>
+</tr>
+<tr>
+<td>A busca diz que o limite do dia acabou</td>
+<td>O OMDb libera de novo no dia seguinte. O resto do app segue funcionando.</td>
+</tr>
+<tr>
+<td>Não acho &quot;Generate API Key&quot; ou &quot;Register Your Application&quot;</td>
+<td>O site mudou a tela. Procure um botão com o mesmo sentido, ou me mande um print.</td>
+</tr>
+</tbody></table></div>
+<h2 id="7-creditos-o-app-mostra-isso-sozinho">7. Créditos (o app mostra isso sozinho)</h2>
+<p>Os serviços exigem aviso de uso. O Couch Critics terá uma tela &quot;Sobre&quot; com:</p>
+<ul>
+<li>&quot;This product uses the TMDB API but is not endorsed or certified by TMDB.&quot; e o logo do TMDB.</li>
+<li>Aviso do IGDB e do OMDb/IMDb.</li>
+</ul>
+<p>Você não precisa fazer nada. Só não esconda essa tela.</p>
+
+  <footer>Couch Critics é um projeto independente, gratuito e sem fins comerciais.</footer>
+</main>
+</body>
+</html>

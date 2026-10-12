@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Couch Critics: how to get the API keys</title>
+<style>
+  :root { --bg: #ffffff; --text: #1b2430; --muted: #4d5b6b; --line: #d8dee6; --accent: #b83b22; --code: #f1f4f7; --head: #eef2f6; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0e1c26; --text: #f1ede8; --muted: #b3c0cb; --line: #27404f; --accent: #ff7a5c; --code: #14293a; --head: #14293a; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 780px; margin: 0 auto; padding: 32px 20px 80px; }
+  .top { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 0 0 28px; font-size: 0.95rem; }
+  h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 12px; }
+  h2 { font-size: 1.35rem; margin: 40px 0 8px; padding-top: 8px; border-top: 1px solid var(--line); }
+  h3 { font-size: 1.1rem; margin: 28px 0 4px; }
+  p, li { margin: 8px 0; }
+  ul, ol { padding-left: 24px; }
+  a { color: var(--accent); }
+  hr { display: none; } /* os títulos já têm a própria linha */
+  code { background: var(--code); padding: 1px 6px; border-radius: 5px; font: 0.9em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow-wrap: anywhere; }
+  pre { background: var(--code); padding: 14px 16px; border-radius: 8px; overflow-x: auto; }
+  pre code { background: none; padding: 0; overflow-wrap: normal; }
+  blockquote { margin: 16px 0; padding: 4px 16px; border-left: 4px solid var(--accent); background: var(--code); border-radius: 0 8px 8px 0; }
+  .table-wrap { overflow-x: auto; margin: 16px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+  th, td { text-align: left; vertical-align: top; padding: 8px 12px; border: 1px solid var(--line); }
+  th { background: var(--head); }
+  footer { margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+  .cards { list-style: none; padding: 0; display: grid; gap: 12px; }
+  .cards li { margin: 0; }
+  .cards a { display: block; padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; text-decoration: none; color: var(--text); }
+  .cards a:hover, .cards a:focus-visible { border-color: var(--accent); }
+  .cards strong { display: block; color: var(--accent); }
+  .cards span { color: var(--muted); font-size: 0.95rem; }
+</style>
+</head>
+<body>
+<main>
+  <nav class="top" aria-label="Navigation"><a href="./">← Guides</a><a href="../">Privacy policy</a></nav>
+<h1 id="couch-critics-how-to-get-the-api-keys">Couch Critics: how to get the API keys</h1>
+<p>This guide is for whoever administers Couch Critics in a community. It walks you through getting the 3 keys the app uses to look up movies, series and games. No programming needed.</p>
+<h2 id="before-you-start">Before you start</h2>
+<p><strong>What is an API key?</strong> It works like a password that Couch Critics uses to ask another website for information (for example, &quot;give me the cover and the Portuguese name of this movie&quot;). Without a key the app still works, but only with titles added by hand and no covers.</p>
+<p><strong>Why does each community use its own?</strong> The websites limit how many requests a key can make per day. One key per community means one community&#39;s usage never slows down another.</p>
+<p><strong>How much does it cost?</strong> Nothing. All 3 keys are free for personal, non-commercial use.</p>
+<p><strong>How long does it take?</strong> About 20 to 30 minutes in total, plus waiting for an e-mail.</p>
+<p><strong>What you need at hand:</strong></p>
+<ul>
+<li>An e-mail address you can open right now.</li>
+<li>A phone (Twitch requires two-factor authentication).</li>
+<li>A computer. TMDB&#39;s sign-up does not work well on phones.</li>
+<li>A few minutes to fill in the forms completely: TMDB and OMDb only create the key if <strong>every requested field</strong> is filled in (application name, URL, description and your contact details on TMDB; e-mail on OMDb).</li>
+</ul>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Used for</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TMDB</td>
+<td>Searching movies and series in English or Portuguese, covers and episodes</td>
+<td>themoviedb.org</td>
+</tr>
+<tr>
+<td>OMDb</td>
+<td>Showing the IMDb rating next to each title</td>
+<td>omdbapi.com</td>
+</tr>
+<tr>
+<td>IGDB (through Twitch)</td>
+<td>Searching games and covers</td>
+<td>dev.twitch.tv</td>
+</tr>
+</tbody></table></div>
+<p>Websites change their screens from time to time. If a button is named a little differently from what is written here, look for the one that does the same thing.</p>
+<hr>
+<h2 id="1-tmdb-movies-and-series">1. TMDB (movies and series)</h2>
+<ol>
+<li><p>Open <a href="https://www.themoviedb.org/" rel="noopener">https://www.themoviedb.org/</a> and create an account (the sign-up button is at the top right). Pick a username, a password and an e-mail.</p>
+</li>
+<li><p>Open the e-mail TMDB sent you and confirm the account, if it asks.</p>
+</li>
+<li><p>Log in, click your picture (top right) and go to <strong>Settings</strong>.</p>
+</li>
+<li><p>In the left menu, click <strong>API</strong>.</p>
+</li>
+<li><p>Request a key. TMDB shows its terms of use: read and accept them. Then it opens an <strong>Application Details</strong> form with 4 fields.</p>
+<blockquote>
+<p><strong>Attention: every field must be filled in for TMDB to create the key.</strong> The form will not let you submit with an empty field. What most often blocks people is the <strong>URL</strong> (shown in red with &quot;Field is required&quot;) and the application <strong>description</strong>. If either is left blank, the key is not created.</p>
+</blockquote>
+<p>Fill them in like this:</p>
+<ul>
+<li><p><strong>Application name:</strong> <code>Couch Critics</code></p>
+</li>
+<li><p><strong>Application URL (required):</strong> the app has no website of its own, so use <code>https://www.rootapp.com</code></p>
+</li>
+<li><p><strong>Type of use:</strong> <code>Personal</code> (personal, non-profit use)</p>
+</li>
+<li><p><strong>About the application (summary):</strong> paste this text, which is what TMDB staff read:</p>
+<pre><code>Couch Critics is a free, non-commercial app for a Root community where friends rate movies, series and games together. It uses the TMDB API to search titles in English and Portuguese and to show posters and episode lists. Each community uses its own API key. The app displays the required TMDB attribution and logo, and no data is sold or monetized.
+</code></pre>
+</li>
+</ul>
+<p>Further down, the form may ask for your contact details (name, address, phone, e-mail). They are also required to create the key. Use real details: they are only for TMDB.</p>
+</li>
+<li><p>When you finish, the <strong>API</strong> page shows two things: <strong>API Key</strong> and <strong>API Read Access Token</strong>.</p>
+</li>
+<li><p>Copy the <strong>API Read Access Token</strong>. It is the very long text (hundreds of characters). Both give the same access, but Couch Critics uses the long one.</p>
+</li>
+</ol>
+<p><strong>Keep:</strong> the API Read Access Token.</p>
+<hr>
+<h2 id="2-omdb-imdb-rating">2. OMDb (IMDb rating)</h2>
+<ol>
+<li>Open <a href="https://www.omdbapi.com/apikey.aspx" rel="noopener">https://www.omdbapi.com/apikey.aspx</a></li>
+<li>Under <strong>Account Type</strong>, choose the free option: <strong>FREE! (1,000 daily limit)</strong>. That means 1,000 requests per day. Couch Critics saves the answers so it uses very few.</li>
+<li>Type your e-mail and click <strong>Generate API Key</strong>.</li>
+<li>Wait for the e-mail with your key. It can take a while, especially with Hotmail, Outlook, Live and Yahoo accounts. Check your spam folder too.</li>
+<li>If the e-mail has an activation link, click it. The key may not work before that.</li>
+<li>If the key does not arrive within 1 hour, the site itself asks you to contact its author.</li>
+</ol>
+<p><strong>Keep:</strong> the key that came by e-mail.</p>
+<hr>
+<h2 id="3-igdb-games-through-twitch">3. IGDB (games), through Twitch</h2>
+<p>IGDB is the games database owned by Twitch. That is why the key comes from a Twitch account.</p>
+<h3 id="3-1-account-and-two-factor-authentication">3.1 Account and two-factor authentication</h3>
+<ol>
+<li>Open <a href="https://www.twitch.tv/" rel="noopener">https://www.twitch.tv/</a> and create an account (<strong>Sign Up</strong>). Confirm the e-mail.</li>
+<li>Turn on <strong>two-factor authentication</strong> (2FA): on Twitch, open <strong>Settings</strong>, then <strong>Security and Privacy</strong>, and find the <strong>Security</strong> section. Turn on two-factor authentication and follow the steps with your phone.<ul>
+<li>Without this, Twitch will not let you create the application in the next step.</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-2-create-the-application">3.2 Create the application</h3>
+<ol start="3">
+<li>Open <a href="https://dev.twitch.tv/console" rel="noopener">https://dev.twitch.tv/console</a> and log in with the same account. If the page does not notice the 2FA you just enabled, refresh it.</li>
+<li>Open the <strong>Applications</strong> tab and click <strong>Register Your Application</strong>.</li>
+<li>Fill in:<ul>
+<li><strong>Name:</strong> a name that is unique across all of Twitch, for example <code>Couch Critics - YourCommunityName</code>. If it says the name is taken, add some numbers.</li>
+<li><strong>OAuth Redirect URLs:</strong> type <code>http://localhost</code> and click <strong>Add</strong>. Couch Critics does not use this address, but the form requires one.</li>
+<li><strong>Category:</strong> choose <strong>Application Integration</strong>. If it is not there, pick the closest option.</li>
+<li><strong>Client Type</strong>, if shown: choose <strong>Confidential</strong>.</li>
+<li>Tick <strong>I&#39;m not a robot</strong> and click <strong>Create</strong>.</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-3-get-the-client-id-and-client-secret">3.3 Get the Client ID and Client Secret</h3>
+<ol start="6">
+<li>In the <strong>Developer Applications</strong> list, find your application and click <strong>Manage</strong>.</li>
+<li>Copy the <strong>Client ID</strong>.</li>
+<li>Click <strong>New Secret</strong> and copy the <strong>Client Secret</strong> right away. It is shown only once. If you lose it, just click <strong>New Secret</strong> again (the old one stops working).</li>
+</ol>
+<p><strong>Keep:</strong> the Client ID and the Client Secret.</p>
+<hr>
+<h2 id="4-where-to-paste-the-keys-in-couch-critics">4. Where to paste the keys in Couch Critics</h2>
+<ol>
+<li><p>Whoever installs the app chooses, during installation, <strong>who administers Couch Critics</strong> (people or roles).</p>
+</li>
+<li><p>Only those people see the <strong>Settings</strong> button at the top of the app.</p>
+</li>
+<li><p>There are three blocks: <strong>TMDB</strong> (one field), <strong>OMDb</strong> (one field) and <strong>IGDB (games)</strong>, which has two fields, <strong>Client ID</strong> and <strong>Client Secret</strong>. Both IGDB fields are required and are saved together with the same Save button. Paste each key in the right place and save. If the service rejects a key, the app says so and does not keep it.
+Detailed guide, with every on-screen message and troubleshooting: <a href="how-to-set-up.html">How to set up the keys</a>.</p>
+</li>
+<li><p>The app stores the keys in your community&#39;s own database. Once saved, they are never shown again on screen (only &quot;configured&quot;).</p>
+</li>
+</ol>
+<p>You can set up just some of them: without the OMDb key, for example, everything works, there is just no IMDb rating.</p>
+<hr>
+<h2 id="5-keeping-the-keys-safe">5. Keeping the keys safe</h2>
+<ul>
+<li>Treat them like passwords. Do not post them in chats, community channels or screenshots.</li>
+<li>If a key leaks:<ul>
+<li><strong>TMDB:</strong> generate another one on the same <strong>Settings → API</strong> page.</li>
+<li><strong>OMDb:</strong> request a new key with the same form.</li>
+<li><strong>Twitch/IGDB:</strong> click <strong>New Secret</strong> (the old Client Secret stops working).
+Then paste the new one into Couch Critics.</li>
+</ul>
+</li>
+<li>If a search suddenly stops working, check whether the key was replaced or expired.</li>
+</ul>
+<h2 id="6-common-problems">6. Common problems</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>The OMDb e-mail does not arrive</td>
+<td>Wait up to 1 hour, check spam, try another e-mail address (Gmail is usually faster).</td>
+</tr>
+<tr>
+<td>Twitch will not let you create the application</td>
+<td>Make sure two-factor authentication is on and refresh the console page.</td>
+</tr>
+<tr>
+<td>&quot;Name already in use&quot; on Twitch</td>
+<td>Change the application name to something more specific.</td>
+</tr>
+<tr>
+<td>The search says the daily limit is over</td>
+<td>OMDb resets the next day. The rest of the app keeps working.</td>
+</tr>
+<tr>
+<td>I cannot find &quot;Generate API Key&quot; or &quot;Register Your Application&quot;</td>
+<td>The site changed its screen. Look for a button with the same meaning, or send me a screenshot.</td>
+</tr>
+</tbody></table></div>
+<h2 id="7-credits-the-app-shows-these-by-itself">7. Credits (the app shows these by itself)</h2>
+<p>The services require a usage notice. Couch Critics will have an &quot;About&quot; screen with:</p>
+<ul>
+<li>&quot;This product uses the TMDB API but is not endorsed or certified by TMDB.&quot; and the TMDB logo.</li>
+<li>The IGDB and OMDb/IMDb notices.</li>
+</ul>
+<p>You do not need to do anything. Just do not hide that screen.</p>
+
+  <footer>Couch Critics is an independent, free, non-commercial project.</footer>
+</main>
+</body>
+</html>

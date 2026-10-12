@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Couch Critics: how to set up the API keys</title>
+<style>
+  :root { --bg: #ffffff; --text: #1b2430; --muted: #4d5b6b; --line: #d8dee6; --accent: #b83b22; --code: #f1f4f7; --head: #eef2f6; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0e1c26; --text: #f1ede8; --muted: #b3c0cb; --line: #27404f; --accent: #ff7a5c; --code: #14293a; --head: #14293a; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 780px; margin: 0 auto; padding: 32px 20px 80px; }
+  .top { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 0 0 28px; font-size: 0.95rem; }
+  h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 12px; }
+  h2 { font-size: 1.35rem; margin: 40px 0 8px; padding-top: 8px; border-top: 1px solid var(--line); }
+  h3 { font-size: 1.1rem; margin: 28px 0 4px; }
+  p, li { margin: 8px 0; }
+  ul, ol { padding-left: 24px; }
+  a { color: var(--accent); }
+  hr { display: none; } /* os títulos já têm a própria linha */
+  code { background: var(--code); padding: 1px 6px; border-radius: 5px; font: 0.9em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow-wrap: anywhere; }
+  pre { background: var(--code); padding: 14px 16px; border-radius: 8px; overflow-x: auto; }
+  pre code { background: none; padding: 0; overflow-wrap: normal; }
+  blockquote { margin: 16px 0; padding: 4px 16px; border-left: 4px solid var(--accent); background: var(--code); border-radius: 0 8px 8px 0; }
+  .table-wrap { overflow-x: auto; margin: 16px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+  th, td { text-align: left; vertical-align: top; padding: 8px 12px; border: 1px solid var(--line); }
+  th { background: var(--head); }
+  footer { margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+  .cards { list-style: none; padding: 0; display: grid; gap: 12px; }
+  .cards li { margin: 0; }
+  .cards a { display: block; padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; text-decoration: none; color: var(--text); }
+  .cards a:hover, .cards a:focus-visible { border-color: var(--accent); }
+  .cards strong { display: block; color: var(--accent); }
+  .cards span { color: var(--muted); font-size: 0.95rem; }
+</style>
+</head>
+<body>
+<main>
+  <nav class="top" aria-label="Navigation"><a href="./">← Guides</a><a href="../">Privacy policy</a></nav>
+<h1 id="couch-critics-how-to-set-up-the-api-keys">Couch Critics: how to set up the API keys</h1>
+<p>This guide shows, step by step, how to put the API keys into Couch Critics. It is for community admins, and it assumes nothing: if you get stuck, jump to <strong>Troubleshooting</strong> at the end.</p>
+<p>Need to get the keys first? See <a href="api-keys.html">How to get the API keys</a>. This page starts when you already have them.</p>
+<hr>
+<h2 id="the-short-version">The short version</h2>
+<ol>
+<li>Open Couch Critics in your community and click <strong>Settings</strong> at the top.</li>
+<li>Paste each key in its block and click <strong>Save</strong>.</li>
+<li>Check that each block says <strong>Configured</strong>.</li>
+</ol>
+<p>That is all. The rest of this page explains each step in detail.</p>
+<hr>
+<h2 id="1-open-the-settings-screen">1. Open the Settings screen</h2>
+<ol>
+<li>In your community, open <strong>Couch Critics</strong>.</li>
+<li>At the top of the app, next to the <strong>Add movie / Add series / Add game</strong> button, you will see <strong>Settings</strong>.</li>
+<li>Click it. A panel called <strong>Data sources</strong> opens below.</li>
+</ol>
+<h3 id="i-do-not-see-the-settings-button">I do not see the Settings button</h3>
+<p>Only the <strong>app admins</strong> see it. The admins are chosen when the app is installed, in the setting called <strong>App admins</strong> (people and roles).</p>
+<ul>
+<li>Ask whoever installed the app to add you (or your role) to <strong>App admins</strong> in the app&#39;s settings in Root.</li>
+<li>Close the app and open it again after that.</li>
+<li>If nobody was ever chosen as admin, the screen shows the notice &quot;Nobody has been chosen as an admin of the app. Whoever saves the first key becomes the admin.&quot; In that case, the first person to save a key becomes the admin.</li>
+</ul>
+<hr>
+<h2 id="2-what-each-block-is-for">2. What each block is for</h2>
+<p>You will see three blocks. You do not need all of them: each one turns on one feature.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Block</th>
+<th>What it turns on</th>
+<th>What you paste</th>
+<th>If you skip it</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>TMDB (movies and series)</strong></td>
+<td>Searching movies and series by name, covers, names in English and Portuguese, episode lists</td>
+<td>One long text (the <strong>API Read Access Token</strong>)</td>
+<td>No search for movies and series. You can still add them by hand, without a cover</td>
+</tr>
+<tr>
+<td><strong>OMDb (IMDb rating)</strong></td>
+<td>The small IMDb rating next to the average, and the IMDb rating of each episode</td>
+<td>One short key from an e-mail</td>
+<td>Everything works, just without IMDb ratings</td>
+</tr>
+<tr>
+<td><strong>IGDB (games)</strong></td>
+<td>Searching games by name and game covers</td>
+<td>Two things: <strong>Client ID</strong> and <strong>Client Secret</strong></td>
+<td>No search for games. You can still add them by hand, without a cover</td>
+</tr>
+</tbody></table></div>
+<p>Each block shows its state on the right: <strong>Not configured</strong> or <strong>Configured</strong>.</p>
+<hr>
+<h2 id="3-paste-the-keys">3. Paste the keys</h2>
+<p>The steps are the same for every block.</p>
+<ol>
+<li>Click inside the field.</li>
+<li>Paste the key (Ctrl+V on Windows, Cmd+V on Mac).</li>
+<li>The field hides what you paste, like a password. Click <strong>Show</strong> to see it and check that it looks right, and <strong>Hide</strong> to hide it again.</li>
+<li>Click <strong>Save</strong>.</li>
+<li>Wait a second or two. The app checks the key with the service before keeping it.</li>
+<li>You should see <strong>Saved.</strong> under the field, and the block should say <strong>Configured</strong>. The field is cleared on purpose: for safety, a saved key is never shown again.</li>
+</ol>
+<p>The <strong>Save</strong> button stays gray until the field has something in it. In the IGDB block it stays gray until <strong>both</strong> fields are filled in.</p>
+<h3 id="tmdb-block">TMDB block</h3>
+<ul>
+<li>Paste the <strong>API Read Access Token</strong>. It is a very long text, hundreds of characters, and starts with <code>eyJ</code>.</li>
+<li>If you only have the short <strong>API Key</strong> (about 32 letters and numbers), it also works. The long token is the recommended one.</li>
+<li>Paste the text alone, with no spaces or line breaks before or after it.</li>
+</ul>
+<h3 id="omdb-block">OMDb block</h3>
+<ul>
+<li>Paste only the key from the e-mail. It is short, about 8 letters and numbers, for example <code>a1b2c3d4</code>.</li>
+<li>The e-mail also shows a link that contains <code>apikey=</code>. <strong>Do not paste the link.</strong> Paste only what comes after <code>apikey=</code>.</li>
+<li>If you just requested the key, open the activation link from the e-mail first. The key may not work before that.</li>
+</ul>
+<h3 id="igdb-block-two-fields">IGDB block (two fields)</h3>
+<ul>
+<li><strong>Client ID:</strong> the code that Twitch shows on the <strong>Manage</strong> page of your application. About 30 letters and numbers.</li>
+<li><strong>Client Secret:</strong> the code you get by clicking <strong>New Secret</strong> on that same page. About 30 letters and numbers.</li>
+<li><strong>Both are required.</strong> The app saves them together, with the single <strong>Save</strong> button of that block.</li>
+<li>The Client Secret is shown only once on the Twitch page. If you did not copy it, click <strong>New Secret</strong> on Twitch and use the new one.</li>
+</ul>
+<hr>
+<h2 id="4-what-the-states-and-messages-mean">4. What the states and messages mean</h2>
+<h3 id="state-of-each-block-top-right-of-the-block">State of each block (top right of the block)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>You see</th>
+<th>It means</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Not configured</strong></td>
+<td>No key saved. That feature is off</td>
+</tr>
+<tr>
+<td><strong>Configured</strong></td>
+<td>The key was checked and saved. The feature is on</td>
+</tr>
+<tr>
+<td><strong>Rejected by the service</strong></td>
+<td>The service refused the key. A key that was already saved before keeps working until it is replaced; the new one was <strong>not</strong> saved</td>
+</tr>
+<tr>
+<td><strong>Saved, but could not be checked right now</strong></td>
+<td>The key was saved, but the service did not answer (it is down, or there is no internet). Try a search a few minutes later</td>
+</tr>
+</tbody></table></div>
+<h3 id="messages-under-the-field">Messages under the field</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Message</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Saved.</strong></td>
+<td>Done</td>
+</tr>
+<tr>
+<td><strong>The service rejected that key. Check that you copied all of it.</strong></td>
+<td>The key is wrong or incomplete. Copy it again from the original page and paste it again. See &quot;Common mistakes&quot; below</td>
+</tr>
+<tr>
+<td><strong>That does not look like a valid key. Copy it again, without spaces.</strong></td>
+<td>The text has the wrong shape: spaces in the middle, a link instead of the key, or part of it missing</td>
+</tr>
+<tr>
+<td><strong>Only app admins can change these settings.</strong></td>
+<td>Your account is not an admin. See &quot;I do not see the Settings button&quot;</td>
+</tr>
+</tbody></table></div>
+<h3 id="common-mistakes">Common mistakes</h3>
+<ul>
+<li><strong>Copying only part of the key.</strong> Triple-click the text to select all of it, or use the copy button on the site if there is one.</li>
+<li><strong>Pasting the whole link</strong> from the OMDb e-mail. Paste only the part after <code>apikey=</code>.</li>
+<li><strong>Pasting the TMDB &quot;API Key&quot; in the wrong block</strong>, or pasting a different code. The TMDB block takes the TMDB token; the IGDB block takes the Twitch codes.</li>
+<li><strong>Swapping the two IGDB fields.</strong> The Client ID goes in <strong>Client ID</strong> and the Client Secret in <strong>Client Secret</strong>.</li>
+<li><strong>A secret that was regenerated.</strong> If you clicked <strong>New Secret</strong> on Twitch, the old Client Secret stopped working. Paste the new one.</li>
+<li><strong>Spaces or a line break</strong> at the beginning or end. The app trims them, but extra characters in the middle break the key.</li>
+<li><strong>A key from the wrong website.</strong> Each block takes a key from its own site: themoviedb.org, omdbapi.com, dev.twitch.tv.</li>
+</ul>
+<hr>
+<h2 id="5-check-that-it-works">5. Check that it works</h2>
+<ol>
+<li>Go to the <strong>Movies</strong> tab and click <strong>Add movie</strong>. Type a title, for example <code>parasite</code>. Results with covers should appear.</li>
+<li>Go to the <strong>Games</strong> tab and click <strong>Add game</strong>. Type a title, for example <code>zelda</code>. Results with covers should appear.</li>
+<li>Add a movie. A small <strong>IMDb</strong> number should show up below the average. It can take a moment, and titles added by hand never have one.</li>
+<li>Open a series that came from the search and click <strong>Rate by episode</strong>. The episodes appear, with the IMDb rating of each one.</li>
+</ol>
+<p>If a search says the source is not set up, go back to <strong>Settings</strong> and check that block.</p>
+<hr>
+<h2 id="6-change-or-remove-a-key">6. Change or remove a key</h2>
+<ul>
+<li><strong>Replace a key:</strong> paste the new one in the same block and click <strong>Save</strong>. The old one is replaced only if the new one is accepted.</li>
+<li><strong>Remove a key:</strong> click <strong>Remove key</strong> under the block. The feature turns off, and titles already added stay in the list.</li>
+<li><strong>After a leak:</strong> generate a new key on the original website (see the key guide) and paste it here. Then, on that website, delete or revoke the old key whenever the site allows it. On Twitch, <strong>New Secret</strong> already cancels the old Client Secret.</li>
+</ul>
+<hr>
+<h2 id="7-keeping-the-keys-safe">7. Keeping the keys safe</h2>
+<ul>
+<li>Treat the keys like passwords. Do not post them in chats, in community channels or in screenshots.</li>
+<li>Use <strong>Show</strong> only when nobody is watching your screen or recording it.</li>
+<li>Once saved, a key can never be read back from the app, only replaced or removed.</li>
+<li>If you posted a key by accident, generate a new one right away and paste it here.</li>
+</ul>
+<hr>
+<h2 id="8-troubleshooting">8. Troubleshooting</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Why it happens</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>No <strong>Settings</strong> button</td>
+<td>You are not an app admin</td>
+<td>See section 1</td>
+</tr>
+<tr>
+<td><strong>Save</strong> stays gray</td>
+<td>The field is empty (or one of the two IGDB fields is)</td>
+<td>Fill in everything</td>
+</tr>
+<tr>
+<td>&quot;The service rejected that key&quot;</td>
+<td>Wrong, incomplete or expired key</td>
+<td>Copy it again from the original website, or generate a new one</td>
+</tr>
+<tr>
+<td>&quot;That does not look like a valid key&quot;</td>
+<td>Spaces, a link, or missing characters</td>
+<td>Paste only the key itself</td>
+</tr>
+<tr>
+<td>&quot;Search is not turned on yet&quot; when adding</td>
+<td>The key for that source was never saved</td>
+<td>An admin needs to paste it in Settings</td>
+</tr>
+<tr>
+<td>&quot;TMDB (or IGDB) rejected the key. An admin needs to replace it&quot;</td>
+<td>A saved key stopped working, for example after <strong>New Secret</strong></td>
+<td>Paste a new key</td>
+</tr>
+<tr>
+<td>&quot;TMDB (or IGDB) is limiting requests right now&quot;</td>
+<td>Too many requests in a short time</td>
+<td>Wait a few minutes</td>
+</tr>
+<tr>
+<td>&quot;Could not reach TMDB (or IGDB) right now&quot;</td>
+<td>The service is down, or the connection failed</td>
+<td>Try again in a moment</td>
+</tr>
+<tr>
+<td>IMDb ratings do not appear</td>
+<td>The OMDb key is missing or its daily limit (1,000 requests) is over</td>
+<td>Check the OMDb block. The limit resets the next day, and ratings are filled in later by themselves</td>
+</tr>
+<tr>
+<td>A series says it has no episode list</td>
+<td>It was added by hand</td>
+<td>The person who added it can remove it (only they can) and add it again by searching</td>
+</tr>
+<tr>
+<td>No covers</td>
+<td>The title was added by hand, or the TMDB/IGDB key is missing</td>
+<td>Add it by searching</td>
+</tr>
+<tr>
+<td>&quot;Saved, but could not be checked right now&quot;</td>
+<td>The service did not answer</td>
+<td>Wait a few minutes and try a search</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="9-frequently-asked-questions">9. Frequently asked questions</h2>
+<p><strong>Do I have to pay for any of this?</strong> No. The three keys are free for non-commercial use.</p>
+<p><strong>Does every community need its own keys?</strong> Yes. Each community pastes its own, so one community&#39;s usage never slows down another.</p>
+<p><strong>Do I need all three?</strong> No. Each key turns on one feature, as shown in the table in section 2.</p>
+<p><strong>Can more than one admin set the keys?</strong> Yes. Anyone in <strong>App admins</strong> can paste, replace or remove them.</p>
+<p><strong>What happens if the admin who saved the keys leaves?</strong> Nothing. The keys belong to the community, not to a person. Another admin can replace them any time.</p>
+<p><strong>Does the app share my keys?</strong> No. They are stored only in your community&#39;s own database and are used by the app&#39;s server to talk to TMDB, OMDb and IGDB.</p>
+<hr>
+<h2 id="still-stuck">Still stuck?</h2>
+<p>Send a message to the person who maintains Couch Critics (Root user <strong>MalphasW</strong>) and tell us:</p>
+<ul>
+<li>which block you are in (TMDB, OMDb or IGDB);</li>
+<li>the exact message you see;</li>
+<li>what you already tried.</li>
+</ul>
+<p><strong>Never send the key itself.</strong></p>
+
+  <footer>Couch Critics is an independent, free, non-commercial project.</footer>
+</main>
+</body>
+</html>

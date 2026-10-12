@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Couch Critics: como configurar as chaves de API</title>
+<style>
+  :root { --bg: #ffffff; --text: #1b2430; --muted: #4d5b6b; --line: #d8dee6; --accent: #b83b22; --code: #f1f4f7; --head: #eef2f6; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0e1c26; --text: #f1ede8; --muted: #b3c0cb; --line: #27404f; --accent: #ff7a5c; --code: #14293a; --head: #14293a; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 780px; margin: 0 auto; padding: 32px 20px 80px; }
+  .top { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 0 0 28px; font-size: 0.95rem; }
+  h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 12px; }
+  h2 { font-size: 1.35rem; margin: 40px 0 8px; padding-top: 8px; border-top: 1px solid var(--line); }
+  h3 { font-size: 1.1rem; margin: 28px 0 4px; }
+  p, li { margin: 8px 0; }
+  ul, ol { padding-left: 24px; }
+  a { color: var(--accent); }
+  hr { display: none; } /* os títulos já têm a própria linha */
+  code { background: var(--code); padding: 1px 6px; border-radius: 5px; font: 0.9em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow-wrap: anywhere; }
+  pre { background: var(--code); padding: 14px 16px; border-radius: 8px; overflow-x: auto; }
+  pre code { background: none; padding: 0; overflow-wrap: normal; }
+  blockquote { margin: 16px 0; padding: 4px 16px; border-left: 4px solid var(--accent); background: var(--code); border-radius: 0 8px 8px 0; }
+  .table-wrap { overflow-x: auto; margin: 16px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+  th, td { text-align: left; vertical-align: top; padding: 8px 12px; border: 1px solid var(--line); }
+  th { background: var(--head); }
+  footer { margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+  .cards { list-style: none; padding: 0; display: grid; gap: 12px; }
+  .cards li { margin: 0; }
+  .cards a { display: block; padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; text-decoration: none; color: var(--text); }
+  .cards a:hover, .cards a:focus-visible { border-color: var(--accent); }
+  .cards strong { display: block; color: var(--accent); }
+  .cards span { color: var(--muted); font-size: 0.95rem; }
+</style>
+</head>
+<body>
+<main>
+  <nav class="top" aria-label="Navigation"><a href="./">← Guias</a><a href="../">Política de privacidade</a></nav>
+<h1 id="couch-critics-como-configurar-as-chaves-de-api">Couch Critics: como configurar as chaves de API</h1>
+<p>Este guia mostra, passo a passo, como colocar as chaves de API no Couch Critics. É para os admins da comunidade e não assume nada: se travar, vá direto para <strong>Solução de problemas</strong>, no final.</p>
+<p>Ainda não tem as chaves? Veja <a href="chaves-de-api.html">Como conseguir as chaves de API</a>. Esta página começa quando você já está com elas.</p>
+<hr>
+<h2 id="a-versao-curta">A versão curta</h2>
+<ol>
+<li>Abra o Couch Critics na sua comunidade e clique em <strong>Configurações</strong>, no topo.</li>
+<li>Cole cada chave no seu bloco e clique em <strong>Salvar</strong>.</li>
+<li>Confira se cada bloco mostra <strong>Configurada</strong>.</li>
+</ol>
+<p>É isso. O resto da página explica cada passo em detalhes.</p>
+<hr>
+<h2 id="1-abrir-a-tela-de-configuracoes">1. Abrir a tela de Configurações</h2>
+<ol>
+<li>Na sua comunidade, abra o <strong>Couch Critics</strong>.</li>
+<li>No topo do app, ao lado do botão <strong>Adicionar filme / série / jogo</strong>, está o botão <strong>Configurações</strong>.</li>
+<li>Clique nele. Abre um painel chamado <strong>Fontes de dados</strong>, logo abaixo.</li>
+</ol>
+<h3 id="nao-aparece-o-botao-configuracoes">Não aparece o botão Configurações</h3>
+<p>Só os <strong>admins do app</strong> veem esse botão. Os admins são escolhidos na instalação do app, na configuração chamada <strong>App admins</strong> (pessoas e cargos).</p>
+<ul>
+<li>Peça a quem instalou o app para incluir você (ou o seu cargo) em <strong>App admins</strong>, nas configurações do app no Root.</li>
+<li>Depois disso, feche o app e abra de novo.</li>
+<li>Se nunca ninguém foi escolhido como admin, a tela mostra o aviso &quot;Ninguém foi escolhido como admin do app. Quem salvar a primeira chave vira o admin.&quot; Nesse caso, a primeira pessoa que salvar uma chave vira o admin.</li>
+</ul>
+<hr>
+<h2 id="2-para-que-serve-cada-bloco">2. Para que serve cada bloco</h2>
+<p>São três blocos. Você não precisa de todos: cada um liga um recurso.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Bloco</th>
+<th>O que liga</th>
+<th>O que colar</th>
+<th>Se você pular</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>TMDB (filmes e séries)</strong></td>
+<td>Busca de filmes e séries pelo nome, capas, nomes em português e inglês, lista de episódios</td>
+<td>Um texto bem comprido (o <strong>API Read Access Token</strong>)</td>
+<td>Sem busca de filmes e séries. Dá para adicionar à mão, sem capa</td>
+</tr>
+<tr>
+<td><strong>OMDb (nota do IMDb)</strong></td>
+<td>A notinha do IMDb ao lado da média e a nota do IMDb de cada episódio</td>
+<td>Uma chave curta que chega por e-mail</td>
+<td>Tudo funciona, só sem as notas do IMDb</td>
+</tr>
+<tr>
+<td><strong>IGDB (jogos)</strong></td>
+<td>Busca de jogos pelo nome e capas dos jogos</td>
+<td>Duas coisas: <strong>Client ID</strong> e <strong>Client Secret</strong></td>
+<td>Sem busca de jogos. Dá para adicionar à mão, sem capa</td>
+</tr>
+</tbody></table></div>
+<p>Cada bloco mostra o estado no canto direito: <strong>Não configurada</strong> ou <strong>Configurada</strong>.</p>
+<hr>
+<h2 id="3-colar-as-chaves">3. Colar as chaves</h2>
+<p>Os passos são iguais para todos os blocos.</p>
+<ol>
+<li>Clique dentro do campo.</li>
+<li>Cole a chave (Ctrl+V no Windows, Cmd+V no Mac).</li>
+<li>O campo esconde o que você cola, como numa senha. Clique em <strong>Mostrar</strong> para ver e conferir se está certo, e em <strong>Ocultar</strong> para esconder de novo.</li>
+<li>Clique em <strong>Salvar</strong>.</li>
+<li>Espere um ou dois segundos. O app confere a chave com o serviço antes de guardá-la.</li>
+<li>Deve aparecer <strong>Salvo.</strong> embaixo do campo, e o bloco deve mostrar <strong>Configurada</strong>. O campo fica vazio de propósito: por segurança, uma chave salva nunca é mostrada de novo.</li>
+</ol>
+<p>O botão <strong>Salvar</strong> fica cinza enquanto o campo estiver vazio. No bloco do IGDB, ele fica cinza até <strong>os dois</strong> campos estarem preenchidos.</p>
+<h3 id="bloco-tmdb">Bloco TMDB</h3>
+<ul>
+<li>Cole o <strong>API Read Access Token</strong>. É um texto muito comprido, com centenas de caracteres, que começa com <code>eyJ</code>.</li>
+<li>Se você só tem a <strong>API Key</strong> curta (uns 32 caracteres entre letras e números), ela também funciona. O token comprido é o recomendado.</li>
+<li>Cole só o texto, sem espaços nem quebras de linha antes ou depois.</li>
+</ul>
+<h3 id="bloco-omdb">Bloco OMDb</h3>
+<ul>
+<li>Cole só a chave que veio no e-mail. Ela é curta, uns 8 caracteres entre letras e números, por exemplo <code>a1b2c3d4</code>.</li>
+<li>O e-mail também traz um link que tem <code>apikey=</code>. <strong>Não cole o link.</strong> Cole só o que vem depois de <code>apikey=</code>.</li>
+<li>Se você acabou de pedir a chave, clique antes no link de ativação do e-mail. A chave pode não funcionar antes disso.</li>
+</ul>
+<h3 id="bloco-igdb-dois-campos">Bloco IGDB (dois campos)</h3>
+<ul>
+<li><strong>Client ID:</strong> o código que a Twitch mostra na página <strong>Manage</strong> do seu aplicativo. Uns 30 caracteres entre letras e números.</li>
+<li><strong>Client Secret:</strong> o código que você recebe ao clicar em <strong>New Secret</strong> nessa mesma página. Uns 30 caracteres entre letras e números.</li>
+<li><strong>Os dois são obrigatórios.</strong> O app salva os dois juntos, com o único botão <strong>Salvar</strong> desse bloco.</li>
+<li>O Client Secret aparece só uma vez na página da Twitch. Se você não copiou, clique em <strong>New Secret</strong> na Twitch e use o novo.</li>
+</ul>
+<hr>
+<h2 id="4-o-que-significam-os-estados-e-as-mensagens">4. O que significam os estados e as mensagens</h2>
+<h3 id="estado-de-cada-bloco-canto-direito-do-bloco">Estado de cada bloco (canto direito do bloco)</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Você vê</th>
+<th>Significa</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Não configurada</strong></td>
+<td>Nenhuma chave salva. Esse recurso está desligado</td>
+</tr>
+<tr>
+<td><strong>Configurada</strong></td>
+<td>A chave foi conferida e salva. O recurso está ligado</td>
+</tr>
+<tr>
+<td><strong>Recusada pelo serviço</strong></td>
+<td>O serviço recusou a chave. Uma chave que já estava salva antes continua valendo até ser trocada; a nova <strong>não</strong> foi salva</td>
+</tr>
+<tr>
+<td><strong>Salva, mas não deu para conferir agora</strong></td>
+<td>A chave foi salva, mas o serviço não respondeu (fora do ar ou sem internet). Teste uma busca daqui a alguns minutos</td>
+</tr>
+</tbody></table></div>
+<h3 id="mensagens-embaixo-do-campo">Mensagens embaixo do campo</h3>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Mensagem</th>
+<th>O que fazer</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Salvo.</strong></td>
+<td>Pronto</td>
+</tr>
+<tr>
+<td><strong>O serviço recusou essa chave. Confira se copiou inteira.</strong></td>
+<td>A chave está errada ou incompleta. Copie de novo da página original e cole outra vez. Veja &quot;Erros mais comuns&quot; abaixo</td>
+</tr>
+<tr>
+<td><strong>Isso não parece uma chave válida. Copie de novo, sem espaços.</strong></td>
+<td>O texto tem o formato errado: espaços no meio, um link no lugar da chave, ou falta um pedaço</td>
+</tr>
+<tr>
+<td><strong>Só admins do app podem mudar essas configurações.</strong></td>
+<td>Sua conta não é admin. Veja &quot;Não aparece o botão Configurações&quot;</td>
+</tr>
+</tbody></table></div>
+<h3 id="erros-mais-comuns">Erros mais comuns</h3>
+<ul>
+<li><strong>Copiar só um pedaço da chave.</strong> Clique três vezes no texto para selecionar tudo, ou use o botão de copiar do site, se houver.</li>
+<li><strong>Colar o link inteiro</strong> do e-mail do OMDb. Cole só a parte depois de <code>apikey=</code>.</li>
+<li><strong>Colar a chave no bloco errado.</strong> O bloco TMDB recebe o token do TMDB; o bloco IGDB recebe os códigos da Twitch.</li>
+<li><strong>Trocar os dois campos do IGDB.</strong> O Client ID vai em <strong>Client ID</strong> e o Client Secret em <strong>Client Secret</strong>.</li>
+<li><strong>Secret que foi gerado de novo.</strong> Se você clicou em <strong>New Secret</strong> na Twitch, o Client Secret antigo parou de funcionar. Cole o novo.</li>
+<li><strong>Espaços ou quebra de linha</strong> no começo ou no fim. O app tira esses, mas caracteres a mais no meio estragam a chave.</li>
+<li><strong>Chave do site errado.</strong> Cada bloco recebe a chave do seu próprio site: themoviedb.org, omdbapi.com, dev.twitch.tv.</li>
+</ul>
+<hr>
+<h2 id="5-conferir-se-funcionou">5. Conferir se funcionou</h2>
+<ol>
+<li>Vá na aba <strong>Filmes</strong> e clique em <strong>Adicionar filme</strong>. Digite um título, por exemplo <code>parasita</code>. Devem aparecer resultados com capa.</li>
+<li>Vá na aba <strong>Jogos</strong> e clique em <strong>Adicionar jogo</strong>. Digite um título, por exemplo <code>zelda</code>. Devem aparecer resultados com capa.</li>
+<li>Adicione um filme. Uma notinha <strong>IMDb</strong> deve aparecer abaixo da média. Pode demorar um pouco, e títulos adicionados à mão nunca têm essa nota.</li>
+<li>Abra uma série que veio da busca e clique em <strong>Avaliar por episódio</strong>. Os episódios aparecem, com a nota do IMDb de cada um.</li>
+</ol>
+<p>Se a busca disser que a fonte não foi ativada, volte em <strong>Configurações</strong> e confira aquele bloco.</p>
+<hr>
+<h2 id="6-trocar-ou-remover-uma-chave">6. Trocar ou remover uma chave</h2>
+<ul>
+<li><strong>Trocar:</strong> cole a chave nova no mesmo bloco e clique em <strong>Salvar</strong>. A antiga só é substituída se a nova for aceita.</li>
+<li><strong>Remover:</strong> clique em <strong>Remover chave</strong>, embaixo do bloco. O recurso desliga, e os títulos já adicionados continuam na lista.</li>
+<li><strong>Depois de um vazamento:</strong> gere uma chave nova no site original (veja o guia das chaves) e cole aqui. Depois, nesse site, apague ou revogue a chave antiga sempre que o site permitir. Na Twitch, <strong>New Secret</strong> já cancela o Client Secret antigo.</li>
+</ul>
+<hr>
+<h2 id="7-mantendo-as-chaves-seguras">7. Mantendo as chaves seguras</h2>
+<ul>
+<li>Trate as chaves como senhas. Não poste em chats, em canais da comunidade nem em prints.</li>
+<li>Use <strong>Mostrar</strong> só quando ninguém estiver vendo ou gravando a sua tela.</li>
+<li>Depois de salva, uma chave nunca pode ser lida de volta no app, só trocada ou removida.</li>
+<li>Se você postou uma chave sem querer, gere outra na hora e cole aqui.</li>
+</ul>
+<hr>
+<h2 id="8-solucao-de-problemas">8. Solução de problemas</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Problema</th>
+<th>Por que acontece</th>
+<th>O que fazer</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Não tem o botão <strong>Configurações</strong></td>
+<td>Você não é admin do app</td>
+<td>Veja a seção 1</td>
+</tr>
+<tr>
+<td><strong>Salvar</strong> fica cinza</td>
+<td>O campo está vazio (ou um dos dois campos do IGDB)</td>
+<td>Preencha tudo</td>
+</tr>
+<tr>
+<td>&quot;O serviço recusou essa chave&quot;</td>
+<td>Chave errada, incompleta ou vencida</td>
+<td>Copie de novo do site original, ou gere outra</td>
+</tr>
+<tr>
+<td>&quot;Isso não parece uma chave válida&quot;</td>
+<td>Espaços, um link, ou caracteres faltando</td>
+<td>Cole só a chave em si</td>
+</tr>
+<tr>
+<td>&quot;A busca ainda não foi ativada&quot; ao adicionar</td>
+<td>A chave daquela fonte nunca foi salva</td>
+<td>Um admin precisa colar em Configurações</td>
+</tr>
+<tr>
+<td>&quot;O TMDB (ou IGDB) recusou a chave. Um admin precisa trocá-la&quot;</td>
+<td>Uma chave salva deixou de funcionar, por exemplo depois de <strong>New Secret</strong></td>
+<td>Cole uma chave nova</td>
+</tr>
+<tr>
+<td>&quot;O TMDB (ou IGDB) está limitando as consultas agora&quot;</td>
+<td>Consultas demais em pouco tempo</td>
+<td>Espere alguns minutos</td>
+</tr>
+<tr>
+<td>&quot;Não foi possível falar com o TMDB (ou IGDB) agora&quot;</td>
+<td>O serviço está fora do ar, ou a conexão falhou</td>
+<td>Tente de novo daqui a pouco</td>
+</tr>
+<tr>
+<td>As notas do IMDb não aparecem</td>
+<td>Falta a chave do OMDb, ou o limite do dia (1.000 consultas) acabou</td>
+<td>Confira o bloco OMDb. O limite volta no dia seguinte, e as notas são preenchidas depois, sozinhas</td>
+</tr>
+<tr>
+<td>Uma série diz que não tem lista de episódios</td>
+<td>Ela foi adicionada à mão</td>
+<td>Quem a adicionou pode removê-la (só essa pessoa pode) e adicionar de novo pela busca</td>
+</tr>
+<tr>
+<td>Sem capas</td>
+<td>O título foi adicionado à mão, ou falta a chave do TMDB/IGDB</td>
+<td>Adicione pela busca</td>
+</tr>
+<tr>
+<td>&quot;Salva, mas não deu para conferir agora&quot;</td>
+<td>O serviço não respondeu</td>
+<td>Espere alguns minutos e teste uma busca</td>
+</tr>
+</tbody></table></div>
+<hr>
+<h2 id="9-perguntas-frequentes">9. Perguntas frequentes</h2>
+<p><strong>Preciso pagar por alguma coisa?</strong> Não. As três chaves são gratuitas para uso não comercial.</p>
+<p><strong>Cada comunidade precisa das suas próprias chaves?</strong> Sim. Cada comunidade cola as suas, para o uso de uma nunca atrasar o de outra.</p>
+<p><strong>Preciso das três?</strong> Não. Cada chave liga um recurso, como mostra a tabela da seção 2.</p>
+<p><strong>Mais de um admin pode configurar as chaves?</strong> Sim. Qualquer pessoa em <strong>App admins</strong> pode colar, trocar ou remover.</p>
+<p><strong>O que acontece se o admin que salvou as chaves sair?</strong> Nada. As chaves são da comunidade, não de uma pessoa. Outro admin pode trocá-las quando quiser.</p>
+<p><strong>O app compartilha as minhas chaves?</strong> Não. Elas ficam só no banco de dados da sua comunidade e são usadas pelo servidor do app para falar com o TMDB, o OMDb e o IGDB.</p>
+<hr>
+<h2 id="ainda-travado">Ainda travado?</h2>
+<p>Mande uma mensagem para quem mantém o Couch Critics (usuário do Root <strong>MalphasW</strong>) e conte:</p>
+<ul>
+<li>em qual bloco você está (TMDB, OMDb ou IGDB);</li>
+<li>a mensagem exata que aparece;</li>
+<li>o que você já tentou.</li>
+</ul>
+<p><strong>Nunca mande a chave em si.</strong></p>
+
+  <footer>Couch Critics é um projeto independente, gratuito e sem fins comerciais.</footer>
+</main>
+</body>
+</html>

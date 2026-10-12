@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Couch Critics: guides</title>
+<style>
+  :root { --bg: #ffffff; --text: #1b2430; --muted: #4d5b6b; --line: #d8dee6; --accent: #b83b22; --code: #f1f4f7; --head: #eef2f6; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0e1c26; --text: #f1ede8; --muted: #b3c0cb; --line: #27404f; --accent: #ff7a5c; --code: #14293a; --head: #14293a; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 780px; margin: 0 auto; padding: 32px 20px 80px; }
+  .top { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 0 0 28px; font-size: 0.95rem; }
+  h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 12px; }
+  h2 { font-size: 1.35rem; margin: 40px 0 8px; padding-top: 8px; border-top: 1px solid var(--line); }
+  h3 { font-size: 1.1rem; margin: 28px 0 4px; }
+  p, li { margin: 8px 0; }
+  ul, ol { padding-left: 24px; }
+  a { color: var(--accent); }
+  hr { display: none; } /* os títulos já têm a própria linha */
+  code { background: var(--code); padding: 1px 6px; border-radius: 5px; font: 0.9em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; overflow-wrap: anywhere; }
+  pre { background: var(--code); padding: 14px 16px; border-radius: 8px; overflow-x: auto; }
+  pre code { background: none; padding: 0; overflow-wrap: normal; }
+  blockquote { margin: 16px 0; padding: 4px 16px; border-left: 4px solid var(--accent); background: var(--code); border-radius: 0 8px 8px 0; }
+  .table-wrap { overflow-x: auto; margin: 16px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+  th, td { text-align: left; vertical-align: top; padding: 8px 12px; border: 1px solid var(--line); }
+  th { background: var(--head); }
+  footer { margin-top: 56px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+  .cards { list-style: none; padding: 0; display: grid; gap: 12px; }
+  .cards li { margin: 0; }
+  .cards a { display: block; padding: 14px 16px; border: 1px solid var(--line); border-radius: 10px; text-decoration: none; color: var(--text); }
+  .cards a:hover, .cards a:focus-visible { border-color: var(--accent); }
+  .cards strong { display: block; color: var(--accent); }
+  .cards span { color: var(--muted); font-size: 0.95rem; }
+</style>
+</head>
+<body>
+<main>
+  <nav class="top" aria-label="Navigation"><a href="../">Privacy policy / Política de privacidade</a></nav>
+
+  <h1>Couch Critics: guides</h1>
+  <p>Couch Critics is a free Root App to rate movies, series and games with your community. These guides are for the admins who set it up.</p>
+  <h2 id="english" lang="en">English</h2>
+  <ul class="cards" lang="en">
+    <li><a href="how-to-set-up.html"><strong>How to set up the API keys</strong><span>Where to paste each key in Couch Critics, what every message means, and how to fix problems.</span></a></li>
+    <li><a href="api-keys.html"><strong>How to get the API keys</strong><span>Step by step to get the free TMDB, OMDb and IGDB (Twitch) keys.</span></a></li>
+  </ul>
+  <h2 id="portugues" lang="pt-BR">Português</h2>
+  <ul class="cards" lang="pt-BR">
+    <li><a href="como-configurar.html"><strong>Como configurar as chaves de API</strong><span>Onde colar cada chave no Couch Critics, o que significa cada mensagem e como resolver problemas.</span></a></li>
+    <li><a href="chaves-de-api.html"><strong>Como conseguir as chaves de API</strong><span>Passo a passo para conseguir as chaves gratuitas do TMDB, OMDb e IGDB (Twitch).</span></a></li>
+  </ul>
+
+  <footer>Couch Critics is an independent, free, non-commercial project.</footer>
+</main>
+</body>
+</html>
